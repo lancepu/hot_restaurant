@@ -4,8 +4,8 @@ const path = require("path");
 
 const PORT = process.env.PORT || 3000;
 
-let tables = [];
-let waitList = [];
+const tables = [];
+const waitList = [];
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -33,10 +33,9 @@ app.get("/api/waitlist", (req, res) => {
 app.post("/api/tables", (req, res) => {
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body parsing middleware
-  var newReservation = req.body;
+  const newReservation = req.body;
 
   if (tables.length < 5) {
-    console.log(tables);
     tables.push(newReservation);
     res.json(newReservation);
   } else {
